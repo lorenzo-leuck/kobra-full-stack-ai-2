@@ -1,0 +1,36 @@
+# Development override — automatically merged by `docker compose up`.
+# Selects the `dev` build stage of each Dockerfile, bind-mounts the source so
+# changes are picked up live (hot reload), and forces file-watch polling so it
+# works reliably across the Docker bind-mount boundary.
+#
+# Hot-reload dev (default):   docker compose up --build
+# Production (no hot reload): docker compose -f docker-compose.yml up --build
+
+services:
+  market-service:
+    build:
+      target: dev
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./apps/market-service:/app
+      - /app/node_modules
+
+  agent:
+    build:
+      target: dev
+    environment:
+      - WATCHFILES_FORCE_POLLING=true
+    volumes:
+      - ./apps/agent:/app
+
+  dashboard:
+    build:
+      target: dev
+    environment:
+      - NODE_ENV=development
+      - VITE_USE_POLLING=1
+    volumes:
+      - ./apps/dashboard:/app
+      - /app/node_modules

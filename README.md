@@ -20,6 +20,9 @@ A voice-controlled financial dashboard powered by an AI assistant that analyzes 
 
 <img src="https://img.shields.io/badge/Docker-latest-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
 
+Video  
+https://www.youtube.com/watch?v=0HQGjg3I2YM&t=8s
+
 # Setup
 
 ## Requirements
